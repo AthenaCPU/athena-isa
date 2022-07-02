@@ -148,7 +148,7 @@ Data can by accessed 8 (Byte), 16 (Half Word), 32 (Word).
 | subu    | 000000 | 000100 |
 | subi    | 000011 | -      |
 | subiu   | 000100 | -      |
-| syscall | 000000 | 111111 |
+| ecall   | 000000 | 111111 |
 | xor     | 000000 | 001100 |
 | xori    | 000111 | -      |
 
@@ -220,7 +220,7 @@ I-format
 
 | 0-5    | 6-10 | 11-15 | 16-31 |
 |--------|------|-------|-------|
-| 000101 | ra   | rv    | imm   |
+| 000101 | ra   | rb    | imm   |
 
 ```pascal
 ra := rb AND imm;
@@ -733,7 +733,7 @@ I-format
 ra := rb - imm
 ```
 
-### syscall
+### ecall
 
 R-format
 

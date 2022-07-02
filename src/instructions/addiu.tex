@@ -1,0 +1,11 @@
+\subsection{ADDIU}
+
+\Iinstr{000010}{ra}{rb}{imm}
+
+\paragraph{Format} ADDIU ra, rb, imm
+
+\paragraph{Purpose} Add immediate word
+
+\begin{lstlisting}[language=C]
+    GPR[ra] = GPR[rb] + (int32_t)(imm);
+\end{lstlisting}

@@ -1,0 +1,10 @@
+\subsection{CALL}
+
+\Jinstr{001101}{ra}{offset}
+
+\paragraph{Format} call ra, offset
+
+\begin{lstlisting}[language=c]
+    GPR[31] = PC + 4;
+    PC = GPR[ra] + (offset * 4);
+\end{lstlisting}
