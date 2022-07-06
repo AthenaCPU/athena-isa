@@ -1,0 +1,11 @@
+\subsection{MOD}
+
+\Rinstr{000000}{ra}{rb}{rc}{00000}{10011}
+
+\paragraph{Format} MOD ra, rb, rc
+
+\paragraph{Purpose} Perform modulo operation on signed word
+
+\begin{lstlisting}[language=C]
+    GPR[ra] = (int32_t)GPR[rb] % (int32_t)GPR[rc];
+\end{lstlisting}

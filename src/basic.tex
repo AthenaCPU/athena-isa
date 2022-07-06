@@ -1,24 +1,27 @@
 \chapter{Basic Architecture}
 
+\section{Instruction Set Characteristics}
+
+
 \section{CPU Registers}
 
-\begin{tabular}{ |p{3cm}|p{3cm}|p{3cm}|  }
+\begin{tabular}{ |p{3cm}|p{3cm}|p{4cm}|  }
     \hline
     \multicolumn{3}{|c|}{General Purpose Registers} \\
     \hline
     Name& Alternate name & Comment \\
     \hline
-    r0  & zero &   Hardwired zero\\
-    r1  & a0   &   Func arg 0 \\
-    r2  & a1   &   Func arg 1 \\
-    r3  & a2   &   Func arg 2 \\
-    r4  & a3   &   Func arg 3 \\
-    r5  & a4   &   Func arg 4 \\
-    r6  & a5   &   Func arg 5 \\
-    r7  & a6   &   Func arg 6 \\
-    r8  & a7   &   Func arg 7 \\
-    r9  &      &  \\
-    r10 &      &  \\
+    r0  & zero & Hardwired zero\\
+    r1  & v0   & Func arg 0 \\
+    r2  & v1   & Func arg 1 \\
+    r3  & v2   & Func arg 2 \\
+    r4  & v3   & Func arg 3 \\
+    r5  & v4   & Func arg 4 \\
+    r6  & v5   & Func arg 5 \\
+    r7  & v6   & Func arg 6 \\
+    r8  & v7   & Func arg 7 \\
+    r9  & a0   & Return value \\
+    r10 & a1   & Return value \\
     r11 &      &  \\
     r12 &      &  \\
     r13 &      &  \\
@@ -33,9 +36,9 @@
     r22 &      &  \\
     r23 &      &  \\
     r24 &      &  \\
-    r25 &      &  \\
-    r26 & k0   &  reserved kernel \\
-    r17 & k1   &  reserved kernel \\
+    r25 & k0   &  Reserved for kernel \\
+    r26 & k1   &  Reserved for kernel \\
+    r17 & at   &  Reserved for Assembler \\
     r28 & sp   &  Stack Pointer \\
     r29 & gp   &  Global Poiter \\
     r30 & fp   &  Frame Pointer \\
