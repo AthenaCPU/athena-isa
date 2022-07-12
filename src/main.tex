@@ -7,6 +7,7 @@
 \usepackage{hyperref}
 \hypersetup{pdftex,colorlinks=true,allcolors=blue}
 \usepackage{hypcap}
+\usepackage{fontawesome}
 
 
 \definecolor{codegreen}{rgb}{0,0.6,0}
@@ -60,6 +61,14 @@
         \bitbox{5}{#2} 
         \bitbox{6}{#1}
     \end{bytefield}}
+
+\newcommand{\ok}{
+    \textcolor{green}{\faCheck}
+}
+
+\newcommand{\no}{
+    \textcolor{red}{\faRemove}
+}
 
 \title{Athena Instruction Set}
 

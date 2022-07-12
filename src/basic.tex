@@ -5,6 +5,8 @@
 
 \section{CPU Registers}
 
+\subsection{General Purpose Registers}
+
 \begin{tabular}{ |p{3cm}|p{3cm}|p{4cm}|  }
     \hline
     \multicolumn{3}{|c|}{General Purpose Registers} \\
@@ -43,6 +45,20 @@
     r29 & gp   &  Global Poiter \\
     r30 & fp   &  Frame Pointer \\
     r31 & ra   &  Return address \\
-
+    
     \hline
-   \end{tabular}
+\end{tabular}
+
+\subsection{Control and Status Registers}
+
+\begin{tabular}{ |p{3cm}|p{1cm}|p{1cm}|p{6cm}| }
+    \hline
+    \multicolumn{4}{|c|}{General Purpose Registers} \\
+    \hline
+    N° & read & write & Description \\
+    \hline
+    0 & \ok & \ok & Status \\
+    1 & \no & \ok & IVT ptr \\
+    2 & \no & \no & EPC \\
+    \hline
+\end{tabular}
