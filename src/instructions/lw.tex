@@ -5,3 +5,7 @@
 \paragraph{Format} LW ra, offset(rb)
 
 \paragraph{Purpose} Loads a 32bit value from memory then store to `ra`
+
+\begin{lstlisting}[language=C]
+    GPR[ra] = *(int32_t)(GPR[rb] + offset);
+\end{lstlisting}

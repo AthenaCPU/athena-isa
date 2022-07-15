@@ -5,3 +5,7 @@
 \paragraph{Format} LB ra, offset(rb)
 
 \paragraph{Purpose} Loads a 8bit value from memory then sign extended to 32bit before storing to `ra`
+
+\begin{lstlisting}[language=C]
+    GPR[ra] = *(int8_t)(GPR[rb] + offset);
+\end{lstlisting}

@@ -5,3 +5,7 @@
 \paragraph{Format} ADDI ra, rb, imm
 
 \paragraph{Purpose} Add immediate word, Trap on Overflow
+
+\begin{lstlisting}[language=C]
+    GPR[ra] = GPR[rb] + (int32_t)(imm);
+\end{lstlisting}

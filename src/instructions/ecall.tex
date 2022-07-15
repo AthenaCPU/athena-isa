@@ -3,3 +3,8 @@
 \Rinstr{000000}{00000}{00000}{00000}{00000}{111111}
 
 \paragraph{Format} ECALL
+
+\begin{lstlisting}[language=C]
+    EPC = PC + 4;
+    PC = INT_VECTOR[SYSCALL_OFFSET];
+\end{lstlisting}

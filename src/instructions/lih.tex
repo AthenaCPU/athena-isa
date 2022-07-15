@@ -5,3 +5,7 @@
 \paragraph{Format} LIH ra, imm
 
 \paragraph{Purpose}
+
+\begin{lstlisting}[language=C]
+    GPR[ra] = (GPR[ra] & ~(0xFFFF << 16)) | (imm << 16);
+\end{lstlisting}

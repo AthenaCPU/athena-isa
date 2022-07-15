@@ -5,3 +5,7 @@
 \paragraph{Format} LBU ra, offset(rb)
 
 \paragraph{Purpose} Loads a 8bit value from memory then zero extended to 32bit before storing to `ra`
+
+\begin{lstlisting}[language=C]
+    GPR[ra] = *(uint8_t)(GPR[rb] + offset);
+\end{lstlisting}

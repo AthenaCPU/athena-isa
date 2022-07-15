@@ -3,3 +3,7 @@
 \Rinstr{000000}{ra}{rb}{rc}{00000}{001010}
 
 \paragraph{Format} NOR ra, rb, rc
+
+\begin{lstlisting}[language=C]
+    GPR[ra] = ~(GPR[rb] | GPR[rc]);
+\end{lstlisting}

@@ -3,3 +3,7 @@
 \Jinstr{001010}{ra}{offset}
 
 \paragraph{Format} JMP ra, offset
+
+\begin{lstlisting}[language=C]
+    PC = GPR[ra] + (offset * 4);
+\end{lstlisting}

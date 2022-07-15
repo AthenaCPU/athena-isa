@@ -1,0 +1,11 @@
+\subsection{MVSRR}
+
+\Rinstr{111111}{ra}{sr}{00000}{00000}{111110}
+
+\paragraph{Format} MVSRR ra, sr
+
+\paragraph{Purpose} Move from Special Register
+
+\begin{lstlisting}[language=C]
+    GPR[ra] = SR[sr];
+\end{lstlisting}
