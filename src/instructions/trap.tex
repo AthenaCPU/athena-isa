@@ -1,10 +1,10 @@
-\subsection{ECALL}
+\subsection{TRAP}
 
 \Rinstr{000000}{00000}{00000}{00000}{00000}{111111}
 
-\paragraph{Format} ECALL
+\paragraph{Format} TRAP
 
 \begin{lstlisting}[language=C]
     EPC = PC + 4;
-    PC = INT_VECTOR[SYSCALL_OFFSET];
+    PC = INT_VECTOR[TRAP_OFFSET];
 \end{lstlisting}

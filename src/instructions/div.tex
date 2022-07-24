@@ -5,5 +5,5 @@
 \paragraph{Format} DIV ra, rb, rc
 
 \begin{lstlisting}[language=C]
-    GPR[ra] = GPR[rb] / GPR[rc];
+    GPR[ra] = (int32_t)GPR[rb] / (int32_t)GPR[rc];
 \end{lstlisting}

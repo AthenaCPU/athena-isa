@@ -5,5 +5,5 @@
 \paragraph{Format} DIVU ra, rb, rc
 
 \begin{lstlisting}[language=C]
-    GPR[ra] = GPR[rb] / GPR[rc];
+    GPR[ra] = (uint32_t)GPR[rb] / (uint32_t)GPR[rc];
 \end{lstlisting}

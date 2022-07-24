@@ -2,6 +2,32 @@
 
 \section{Instruction Set Characteristics}
 
+\section{Data Format}
+
+\subsection{Signed Integer}
+
+\subsubsection{Signed byte}
+\begin{bytefield}{8}
+    \bitheader[endianness=big]{7,6,0} \\
+    \bitbox{1}{S} 
+    \bitbox{7}{}
+\end{bytefield}
+
+\subsubsection{Signed halfword}
+\begin{bytefield}{16}
+    \bitheader[endianness=big]{15,14,0} \\
+    \bitbox{1}{S} 
+    \bitbox{15}{}
+\end{bytefield}
+
+\subsubsection{Signed word}
+\begin{bytefield}{32}
+    \bitheader[endianness=big]{31,30,0} \\
+    \bitbox{1}{S} 
+    \bitbox{31}{}
+\end{bytefield}
+
+\subsection{Unsigned Integer}
 
 \section{CPU Registers}
 
@@ -53,22 +79,40 @@
 
 \begin{tabular}{ |p{3cm}|p{1cm}|p{1cm}|p{6cm}| }
     \hline
-    \multicolumn{4}{|c|}{General Purpose Registers} \\
+    \multicolumn{4}{|c|}{Special Registers} \\
     \hline
     N° & read & write & Description \\
     \hline
-    0 & \ok & \ok & Status \\
-    1 & \no & \ok & IVT ptr \\
-    2 & \no & \no & EPC \\
+    0 & \ok & \no & Machine ISA Register \\
+    1 & \ok & \no & Vendor ID \\
+    1 & \ok & \ok & Status Register \\
+    2 & \no & \ok & Trap Vector Base Address Regiter\\
+    3 & \ok & \ok & Interrupt Enable register \\
+    4 & \no & \no & Exeption Program Counter \\
+    5 & \ok & \no & Cause Register \\
     \hline
 \end{tabular}
 
-\subsubsection{Status}
+\subsubsection{Status Register}
 
+\begin{bytefield}{32}
+    \bitheader[endianness=big]{31,4,2,0} \\
+    \bitbox{30}{-} 
+    \bitbox{1}{P} 
+    \bitbox{1}{S}
+\end{bytefield}
 
+\begin{itemize}
+    \item S: supervisor mode (1: supervisor, 0: userspace)
+    \item P: paging (1: enabled, 0: disabled)
+\end{itemize}
 
-\subsubsection{IVT ptr}
+\subsubsection{Trap Vector Base Address Regiter}
 
-\paragraph{Default value:} 0x0
+\begin{bytefield}{32}
+    \bitheader[endianness=big]{31,2,0} \\
+    \bitbox{31}{base}
+    \bitbox{1}{M}
+\end{bytefield}
 
 \subsubsection{EPC}
