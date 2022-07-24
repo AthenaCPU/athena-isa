@@ -5,5 +5,10 @@
 \paragraph{Format} MULT ra, rb, rc
 
 \begin{lstlisting}[language=C]
-    GPR[ra] = GPR[rb] * GPR[rc];
+    int64_t result =  (int32_t)GPR[rb] * (int32_t)GPR[rc];
+    if (ra != 0)
+    {
+        GPR[ra] = high(result);
+    }
+    GPR[rb] = low(result);
 \end{lstlisting}

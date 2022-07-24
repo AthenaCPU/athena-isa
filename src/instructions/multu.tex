@@ -1,9 +1,14 @@
 \subsection{MULTU}
 
-\Rinstr{000000}{ra}{rb}{rc}{00000}{001001}
+\Rinstr{000000}{ra}{rb}{rc}{rd}{001001}
 
-\paragraph{Format} MULTU ra, rb, rc
+\paragraph{Format} MULTU ra, rb, rc, rd
 
 \begin{lstlisting}[language=C]
-    GPR[ra] = GPR[rb] * GPR[rc];
+    uint64_t result =  (uint32_t)GPR[rb] * (uint32_t)GPR[rc];
+    if (ra != 0)
+    {
+        GPR[ra] = high(result);
+    }
+    GPR[rb] = low(result);
 \end{lstlisting}
