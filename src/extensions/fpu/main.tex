@@ -1,5 +1,16 @@
 \chapter{FPU}
 
+\section{Floating-Point Representation}
+
+IEEE 754 single-precision
+
+\begin{bytefield}{32}
+    \bitheader[endianness=big]{31,30,23,0} \\
+    \bitbox{1}{S} 
+    \bitbox{8}{exp} 
+    \bitbox{23}{fraction}
+\end{bytefield}
+
 \section{Registers}
 
 \begin{tabular}{ |p{3cm}|p{4cm}|  }
@@ -43,3 +54,5 @@
     
     \hline
 \end{tabular}
+
+\input{src/extensions/fpu/instr}
