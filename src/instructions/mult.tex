@@ -1,11 +1,11 @@
 \subsection{MULT}
 
-\Rinstr{000000}{ra}{rb}{rc}{00000}{001000}
+\Rinstr{000000}{ra}{rb}{rc}{rd}{001000}
 
-\paragraph{Format} MULT ra, rb, rc
+\paragraph{Format} MULT ra, rb, rc, rd
 
 \begin{lstlisting}[language=C]
-    int64_t result =  (int64_t)GPR[rb] * (int64_t)GPR[rc];
+    int64_t result =  (int64_t)GPR[rc] * (int64_t)GPR[rd];
     GPR[ra] = high(result);
     GPR[rb] = low(result);
 \end{lstlisting}

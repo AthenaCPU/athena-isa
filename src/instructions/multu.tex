@@ -5,7 +5,7 @@
 \paragraph{Format} MULTU ra, rb, rc, rd
 
 \begin{lstlisting}[language=C]
-    uint64_t result =  (uint64_t)GPR[rb] * (uint64_t)GPR[rc];
+    uint64_t result =  (uint64_t)GPR[rc] * (uint64_t)GPR[rd];
     GPR[ra] = high(result);
     GPR[rb] = low(result);
 \end{lstlisting}
