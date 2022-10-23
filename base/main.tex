@@ -1,0 +1,103 @@
+\documentclass[a4paper]{scrbook}
+
+\usepackage{graphicx}
+\usepackage{bytefield}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\hypersetup{pdftex,colorlinks=true,allcolors=blue}
+\usepackage{hypcap}
+\usepackage{fontawesome}
+
+
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstdefinestyle{mystyle}{   
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+}
+
+\lstset{style=mystyle}
+
+\newcommand{\Rinstr}[6]{
+    \begin{bytefield}{32}
+        \bitheader[endianness=big]{31,26,21,16,11,6,0} \\
+        \bitbox{6}{#6} 
+        \bitbox{5}{#5} 
+        \bitbox{5}{#4} 
+        \bitbox{5}{#3} 
+        \bitbox{5}{#2} 
+        \bitbox{6}{#1}
+    \end{bytefield}}
+
+\newcommand{\Iinstr}[4]{
+    \begin{bytefield}{32}
+        \bitheader[endianness=big]{31,16,11,6,0} \\
+        \bitbox{16}{#4} 
+        \bitbox{5}{#3} 
+        \bitbox{5}{#2} 
+        \bitbox{6}{#1}
+    \end{bytefield}}
+
+\newcommand{\Jinstr}[3]{
+    \begin{bytefield}{32}
+        \bitheader[endianness=big]{31,11,6,0} \\
+        \bitbox{21}{#3} 
+        \bitbox{5}{#2} 
+        \bitbox{6}{#1}
+    \end{bytefield}}
+
+\newcommand{\LSinstr}[5]{
+    \begin{bytefield}{32}
+        \bitheader[endianness=big]{31,18,16,11,6,0} \\
+        \bitbox{14}{#5} 
+        \bitbox{2}{#4} 
+        \bitbox{5}{#3} 
+        \bitbox{5}{#2} 
+        \bitbox{6}{#1}
+    \end{bytefield}}
+
+\newcommand{\ok}{
+    \textcolor{green}{\faCheck}
+}
+
+\newcommand{\no}{
+    \textcolor{red}{\faRemove}
+}
+
+\title{Athena Instruction Set}
+
+\author{d0p1}
+
+\lowertitleback{Copyright \copyright{} 2022 d0p1
+    \medskip\\
+    \begin{tabular}{lp{.8\textwidth}}
+        \raisebox{-12pt}{\includegraphics[height=18pt]{fig/gfdl}} &
+        Permission is granted to copy, distribute and/or modify this document
+    under the terms of the GNU Free Documentation License, Version 1.3
+    or any later version published by the Free Software Foundation;
+    with no Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts. \\
+    \end{tabular}
+}
+
+\begin{document}
+    \frontmatter
+
+    \maketitle
+
+    \tableofcontents
+
+    \mainmatter
+
+    \input{base/intro}
+    \input{base/basic}
+    \input{base/instr}
+
+    \appendix
+
+\end{document}

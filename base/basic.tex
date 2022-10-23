@@ -77,19 +77,19 @@
 
 \subsection{Control and Status Registers}
 
-\begin{tabular}{ |p{3cm}|p{1cm}|p{1cm}|p{6cm}| }
+\begin{tabular}{ |p{3cm}|p{3cm}|p{1cm}|p{1cm}|p{6cm}| }
     \hline
     \multicolumn{4}{|c|}{Special Registers} \\
     \hline
-    N° & read & write & Description \\
+    N° & name & read & write & Description \\
     \hline
-    0 & \ok & \no & Machine ISA Register \\
-    1 & \ok & \no & Vendor ID \\
-    1 & \ok & \ok & Status Register \\
-    2 & \no & \ok & Trap Vector Base Address Regiter\\
-    3 & \ok & \ok & Interrupt Enable register \\
-    4 & \no & \no & Exeption Program Counter \\
-    5 & \ok & \no & Cause Register \\
+    0 & isa & \ok & \no & Machine ISA Register \\
+    1 & vendorid & \ok & \no & Vendor ID \\
+    2 & status & \ok & \ok & Status Register \\
+    3 & trapvec & \no & \ok & Trap Vector Base Address Regiter\\
+    4 & inten & \ok & \ok & Interrupt Enable register \\
+    5 & epc & \no & \no & Exeption Program Counter \\
+    6 & cause & \ok & \no & Cause Register \\
     \hline
 \end{tabular}
 
