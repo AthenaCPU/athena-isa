@@ -1,33 +1,57 @@
 \chapter{Basic Architecture}
 
-\section{Instruction Set Characteristics}
+\section{Addressing}
 
-\section{Data Format}
+The basic addressable unit is the 8-bit byte. 
+
+\section{Data Type}
+
+\subsection{Unsigned Integer}
+
+\subsubsection{Byte}
+
+\begin{bytefield}{8}
+    \bitheader[endianness=big]{7,0} \\
+    \bitbox{8}{}
+\end{bytefield}
+
+\subsubsection{Halfword}
+
+\begin{bytefield}{16}
+    \bitheader[endianness=big]{15,0} \\
+    \bitbox{16}{}
+\end{bytefield}
+
+\subsubsection{Word}
+
+\begin{bytefield}{32}
+    \bitheader[endianness=big]{31,0} \\
+    \bitbox{32}{}
+\end{bytefield}
+
 
 \subsection{Signed Integer}
 
 \subsubsection{Signed byte}
-\begin{bytefield}{8}
+\begin{bytefield}[bitheight=\widthof{~Sign~}]{8}
     \bitheader[endianness=big]{7,6,0} \\
-    \bitbox{1}{S} 
+    \bitbox{1}{\rotatebox{90}{Sign}} 
     \bitbox{7}{}
 \end{bytefield}
 
 \subsubsection{Signed halfword}
-\begin{bytefield}{16}
+\begin{bytefield}[bitheight=\widthof{~Sign~}]{16}
     \bitheader[endianness=big]{15,14,0} \\
-    \bitbox{1}{S} 
+    \bitbox{1}{\rotatebox{90}{Sign}} 
     \bitbox{15}{}
 \end{bytefield}
 
 \subsubsection{Signed word}
-\begin{bytefield}{32}
+\begin{bytefield}[bitheight=\widthof{~Sign~}]{32}
     \bitheader[endianness=big]{31,30,0} \\
-    \bitbox{1}{S} 
+    \bitbox{1}{\rotatebox{90}{Sign}} 
     \bitbox{31}{}
 \end{bytefield}
-
-\subsection{Unsigned Integer}
 
 \section{CPU Registers}
 
@@ -40,37 +64,37 @@
     Name& Alternate name & Comment \\
     \hline
     r0  & zero & Hardwired zero\\
-    r1  & v0   & Func arg 0 \\
-    r2  & v1   & Func arg 1 \\
-    r3  & v2   & Func arg 2 \\
-    r4  & v3   & Func arg 3 \\
-    r5  & v4   & Func arg 4 \\
-    r6  & v5   & Func arg 5 \\
-    r7  & v6   & Func arg 6 \\
-    r8  & v7   & Func arg 7 \\
-    r9  & a0   & Return value \\
-    r10 & a1   & Return value \\
-    r11 &      &  \\
-    r12 &      &  \\
-    r13 &      &  \\
-    r14 &      &  \\
-    r15 &      &  \\
-    r16 &      &  \\
-    r17 &      &  \\
-    r18 &      &  \\
-    r19 &      &  \\
-    r20 &      &  \\
-    r21 &      &  \\
-    r22 &      &  \\
-    r23 &      &  \\
-    r24 &      &  \\
-    r25 & k0   &  Reserved for kernel \\
-    r26 & k1   &  Reserved for kernel \\
-    r27 & at   &  Reserved for Assembler \\
-    r28 & sp   &  Stack Pointer \\
-    r29 & gp   &  Global Poiter \\
-    r30 & fp   &  Frame Pointer \\
-    r31 & ra   &  Return address \\
+    r1  & a0   & Func arg 0 \\
+    r2  & a1   & Func arg 1 \\
+    r3  & a2   & Func arg 2 \\
+    r4  & a3   & Func arg 3 \\
+    r5  & a4   & Func arg 4 \\
+    r6  & a5   & Func arg 5 \\
+    r7  & a6   & Func arg 6 \\
+    r8  & a7   & Func arg 7 \\
+    r9  & v0   & Return value \\
+    r10 & v1   & Return value \\
+    r11 & s0   & Saved register \\
+    r12 & s1   & Saved register  \\
+    r13 & s2   & Saved register  \\
+    r14 & s3   & Saved register  \\
+    r15 & s4   & Saved register  \\
+    r16 & s5   & Saved register  \\
+    r17 & s6   & Saved register  \\
+    r18 & t0   & Temporary register \\
+    r19 & t1   & Temporary register \\
+    r20 & t2   & Temporary register \\
+    r21 & t3   & Temporary register \\
+    r22 & t4   & Temporary register \\
+    r23 & t5   & Temporary register \\
+    r24 & t6   & Temporary register\\
+    r25 & k0   & Reserved for kernel \\
+    r26 & k1   & Reserved for kernel \\
+    r27 & at   & Reserved for Assembler \\
+    r28 & sp   & Stack Pointer \\
+    r29 & gp   & Global Poiter \\
+    r30 & fp   & Frame Pointer \\
+    r31 & ra   & Return address \\
     
     \hline
 \end{tabular}
@@ -86,18 +110,19 @@
     0 & isa & \ok & \no & Machine ISA Register \\
     1 & vendorid & \ok & \no & Vendor ID \\
     2 & status & \ok & \ok & Status Register \\
-    3 & trapvec & \no & \ok & Trap Vector Base Address Regiter\\
-    4 & inten & \ok & \ok & Interrupt Enable register \\
+    3 & cause & \ok & \no & Status Register \\
+    4 & trapvec & \no & \ok & Trap Vector Base Address Regiter\\
     5 & epc & \no & \no & Exeption Program Counter \\
-    6 & cause & \ok & \no & Cause Register \\
+    6 & pc & \ok & \no & Program Counter \\
     \hline
 \end{tabular}
 
 \subsubsection{Status Register}
 
-\begin{bytefield}{32}
-    \bitheader[endianness=big]{31,4,2,0} \\
-    \bitbox{30}{-} 
+\begin{bytefield}[bitwidth=\widthof{IE}]{32}
+    \bitheader[endianness=big]{31,3,2,1,0} \\
+    \bitbox{28}{-}
+    \bitbox{1}{IE}
     \bitbox{1}{P} 
     \bitbox{1}{S}
 \end{bytefield}
@@ -105,12 +130,13 @@
 \begin{itemize}
     \item S: supervisor mode (1: supervisor, 0: userspace)
     \item P: paging (1: enabled, 0: disabled)
+    \item IE: interruptt enable (1: enabled, 0: disabled) 
 \end{itemize}
 
 \subsubsection{Trap Vector Base Address Regiter}
 
 \begin{bytefield}{32}
-    \bitheader[endianness=big]{31,2,0} \\
+    \bitheader[endianness=big]{31,1,0} \\
     \bitbox{31}{base}
     \bitbox{1}{M}
 \end{bytefield}
