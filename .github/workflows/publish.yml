@@ -1,0 +1,28 @@
+name: Publish ISA
+
+on:
+  push:
+    tags:
+      - "v*.*.*"
+
+jobs:
+  run-ons: ubuntu-latest
+
+  steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+
+    - name: Install dependencies
+      run: sudo apt install pdflatex texlive-science
+    
+    - name: Build PDF ISA
+      run: make
+
+    - name: Release
+      uses: softprops/action-gh-release@v1
+      if: startsWith(github.ref, 'refs/tags/')
+      with:
+        files: |
+            athena_crypto.pdf
+            athena_fpu.pdf
+            athena_isa.pdf
