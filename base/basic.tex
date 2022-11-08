@@ -55,6 +55,8 @@ The basic addressable unit is the 8-bit byte.
 
 \section{CPU Registers}
 
+An Athena processor includes two types of registers: general purpose registers (GPR) and control/status registers (CRS). 
+
 \subsection{General Purpose Registers}
 
 \begin{tabular}{ |p{3cm}|p{3cm}|p{4cm}|  }
@@ -103,34 +105,49 @@ The basic addressable unit is the 8-bit byte.
 
 \begin{tabular}{ |p{3cm}|p{3cm}|p{1cm}|p{1cm}|p{6cm}| }
     \hline
-    \multicolumn{4}{|c|}{Special Registers} \\
+    \multicolumn{5}{|c|}{Special Registers} \\
     \hline
     N° & name & read & write & Description \\
     \hline
     0 & isa & \ok & \no & Machine ISA Register \\
-    1 & vendorid & \ok & \no & Vendor ID \\
-    2 & status & \ok & \ok & Status Register \\
-    3 & cause & \ok & \no & Status Register \\
-    4 & trapvec & \no & \ok & Trap Vector Base Address Regiter\\
-    5 & epc & \no & \no & Exeption Program Counter \\
-    6 & pc & \ok & \no & Program Counter \\
+    1 & status & \ok & \ok & Status Register \\
+    2 & cause & \ok & \no & Cause Register \\
+    3 & trapvec & \no & \ok & Trap Vector Base Address Regiter\\
+    4 & epc & \no & \no & Exeption Program Counter \\
+    5 & pc & \no & \no & Program Counter \\
     \hline
 \end{tabular}
 
-\subsubsection{Status Register}
+
+\subsubsection{Machine ISA Register}
 
 \begin{bytefield}[bitwidth=\widthof{IE}]{32}
+    \bitheader[endianness=big]{31,1,0} \\
+    \bitbox{30}{-}
+    \bitbox{1}{F}
+\end{bytefield}
+
+\begin{itemize}
+    \item F: Single-Precision Floating-Point Extension
+    \item C: Cryptography Extension
+\end{itemize}
+
+\subsubsection{Status Register}
+
+\begin{bytefield}[bitwidth=\widthof{ET}]{32}
     \bitheader[endianness=big]{31,3,2,1,0} \\
-    \bitbox{28}{-}
-    \bitbox{1}{IE}
+    \bitbox{4}{impl}
+    \bitbox{4}{vers}
+    \bitbox{20}{-}
+    \bitbox{1}{ET}
     \bitbox{1}{P} 
     \bitbox{1}{S}
 \end{bytefield}
 
 \begin{itemize}
-    \item S: supervisor mode (1: supervisor, 0: userspace)
+    \item S: supervisor mode (1: supervisor, 0: user mode)
     \item P: paging (1: enabled, 0: disabled)
-    \item IE: interruptt enable (1: enabled, 0: disabled) 
+    \item ET: enable traps (1: enabled, 0: disabled) 
 \end{itemize}
 
 \subsubsection{Trap Vector Base Address Regiter}
@@ -142,3 +159,5 @@ The basic addressable unit is the 8-bit byte.
 \end{bytefield}
 
 \subsubsection{EPC}
+
+\subsubsection{Program Counter}

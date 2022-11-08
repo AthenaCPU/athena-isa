@@ -4,7 +4,7 @@
 
 \paragraph{Format} LIH ra, imm
 
-\paragraph{Purpose}
+\paragraph{Purpose} Load a constant into the upper half of a word
 
 \begin{lstlisting}[language=C]
     GPR[ra] = (GPR[ra] & ~(0xFFFF << 16)) | (imm << 16);
