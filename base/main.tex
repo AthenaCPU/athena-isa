@@ -61,7 +61,7 @@
     \end{bytefield}}
 
 \newcommand{\LSinstr}[5]{
-    \begin{bytefield}{32}
+    \begin{bytefield}[bitheight=\widthof{~width~}]{32}
         \bitheader[endianness=big]{31,18,16,11,6,0} \\
         \bitbox{14}{#5} 
         \bitbox{2}{#4} 
@@ -103,6 +103,7 @@
     \mainmatter
 
     \input{base/intro}
+    \input{base/mode}
     \input{base/basic}
     \input{base/memory}
     \input{base/exception}

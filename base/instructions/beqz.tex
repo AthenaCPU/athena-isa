@@ -9,6 +9,6 @@
 \begin{lstlisting}[language=c]
     if (GPR[ra] == 0)
     {
-        PC += offset * 4;
+        PC += (int32_t)offset * 4;
     }
 \end{lstlisting}

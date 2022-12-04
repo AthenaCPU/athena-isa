@@ -113,8 +113,9 @@ An Athena processor includes two types of registers: general purpose registers (
     1 & status & \ok & \ok & Status Register \\
     2 & cause & \ok & \no & Cause Register \\
     3 & trapvec & \no & \ok & Trap Vector Base Address Regiter\\
-    4 & epc & \no & \no & Exeption Program Counter \\
-    5 & pc & \no & \no & Program Counter \\
+    4 & prid & \ok & \no & Processor Identification \\
+    5 & epc & \no & \no & Exeption Program Counter \\
+    6 & pc & \no & \no & Program Counter \\
     \hline
 \end{tabular}
 
@@ -151,6 +152,15 @@ An Athena processor includes two types of registers: general purpose registers (
 \end{itemize}
 
 \subsubsection{Trap Vector Base Address Regiter}
+
+\begin{bytefield}{32}
+    \bitheader[endianness=big]{31,1,0} \\
+    \bitbox{31}{base}
+    \bitbox{1}{M}
+\end{bytefield}
+
+\subsection{Processor Id}
+
 
 \begin{bytefield}{32}
     \bitheader[endianness=big]{31,1,0} \\
