@@ -3,3 +3,7 @@
 \Iinstr{000100}{ra}{rb}{imm}
 
 \paragraph{Format} SUBIU ra, rb, imm
+
+\begin{lstlisting}[language=C]
+    GPR[ra] = GPR[rb] - ZEXT(imm);
+\end{lstlisting}

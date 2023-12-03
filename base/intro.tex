@@ -1,5 +1,23 @@
 \chapter{Introduction}
 
-Athena is a new instruction-set-architecture (ISA) inspired by MIPS, SPARC, RISC-V and designed for fun.
+Athena is a new load/store RISC architecture inspired by MIPS, SPARC, 
+RISC-V and designed for fun.
 
-This document also enforce ABI which may change with ISA revision.
+
+This manual also enforce ABI which may change with ISA revision.
+
+\section{Conventions}
+
+\subsection{Numbering}
+
+All numbers are decimal or hexadecimal unless orthewise indicated.
+Hexadecimal number start with the prefix 0x.
+
+\subsection{Notations}
+
+\begin{tabular}{ | c | c | }
+    \hline
+    SEXT(x) & X is sign-extended \\
+    ZEXT(x) & X is zero-extended \\
+    \hline
+\end{tabular}

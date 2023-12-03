@@ -1,12 +1,12 @@
-\subsection{LW}
+\subsection{LWU}
 
-\LSinstr{001001}{ra}{rb}{10}{offset}
+\LSinstr{001100}{ra}{rb}{10}{offset}
 
-\paragraph{Format} LW ra, offset(rb)
+\paragraph{Format} LWU ra, offset(rb)
 
 \paragraph{Purpose} Loads a 32bit value from memory then store to `ra`
 
 \begin{lstlisting}[language=C]
     vaddr = GPR[rb] + SEXT(offset);
-    GPR[ra] = SEXT(*vaddr<31:0>);
+    GPR[ra] = ZEXT(*vaddr<31:0>);
 \end{lstlisting}

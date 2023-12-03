@@ -1,0 +1,9 @@
+\subsection{LDAH}
+
+\Iinstr{XXXX}{ra}{rb}{imm}
+
+\paragraph{Format} LDAH ra, rb, imm
+
+\begin{lstlisting}[language=C]
+    GPR[ra] = GPR[rb] + SEXT(imm*65536);
+\end{lstlisting}

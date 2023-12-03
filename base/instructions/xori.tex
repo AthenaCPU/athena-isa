@@ -5,5 +5,5 @@
 \paragraph{Format} XORI ra, rb, imm
 
 \begin{lstlisting}[language=C]
-    GPR[ra] = GPR[rb] ^ imm;
+    GPR[ra] = GPR[rb] ^ ZEXT(imm);
 \end{lstlisting}

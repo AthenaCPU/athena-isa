@@ -7,6 +7,6 @@
 \begin{lstlisting}[language=c]
     if (GPR[ra] < GPR[rb])
     {
-        PC += (int32_t)offset * 4;
+        PC += SEXT(offset) * 4;
     }
 \end{lstlisting}

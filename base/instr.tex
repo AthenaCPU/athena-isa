@@ -2,6 +2,14 @@
 
 \section{Instruction Format}
 
+There are 4 basic Athena instruction formats:
+\begin{itemize}
+    \item R-Format
+    \item I-Format
+    \item J-Format
+    \item LS-Format
+\end{itemize}
+
 \subsection{R-Format}
 
 \Rinstr{opcode}{ra}{rb}{rc}{shmat}{func}
@@ -23,37 +31,32 @@
 \input{base/instructions/add}
 \input{base/instructions/addi}
 \input{base/instructions/addiu}
-\input{base/instructions/addu}
+\input{base/instructions/addw}
 \input{base/instructions/and}
 \input{base/instructions/andi}
-\input{base/instructions/b}
 \input{base/instructions/beq}
-\input{base/instructions/beqz}
 \input{base/instructions/bge}
 \input{base/instructions/bgeu}
-\input{base/instructions/bgez}
 \input{base/instructions/blt}
 \input{base/instructions/bltu}
-\input{base/instructions/bltz}
 \input{base/instructions/bne}
-\input{base/instructions/bnez}
 \input{base/instructions/call}
 \input{base/instructions/div}
 \input{base/instructions/divu}
 \input{base/instructions/jmp}
 \input{base/instructions/lb}
 \input{base/instructions/lbu}
+\input{base/instructions/lda}
+\input{base/instructions/ldah}
 \input{base/instructions/lh}
 \input{base/instructions/lhu}
-\input{base/instructions/lih}
+\input{base/instructions/ld}
 \input{base/instructions/lw}
-\input{base/instructions/mod}
-\input{base/instructions/modu}
+\input{base/instructions/lwu}
 \input{base/instructions/mult}
 \input{base/instructions/multu}
 \input{base/instructions/mvsrr}
 \input{base/instructions/mvsrw}
-\input{base/instructions/nop}
 \input{base/instructions/nor}
 \input{base/instructions/or}
 \input{base/instructions/ori}
@@ -68,8 +71,11 @@
 \input{base/instructions/sub}
 \input{base/instructions/subi}
 \input{base/instructions/subiu}
-\input{base/instructions/subu}
+\input{base/instructions/subw}
+\input{base/instructions/sd}
 \input{base/instructions/sw}
+\input{base/instructions/swu}
+\input{base/instructions/swu}
 \input{base/instructions/trap}
 \input{base/instructions/xor}
 \input{base/instructions/xori}

@@ -4,10 +4,10 @@
 
 \paragraph{Format} ADDI ra, rb, imm
 
-\paragraph{Purpose} Add immediate word, Trap on Overflow
+\paragraph{Purpose} Add immediate sign extended, Trap on Overflow
 
 \begin{lstlisting}[language=C]
-    GPR[ra] = GPR[rb] + (int32_t)(imm);
+    GPR[ra] = GPR[rb] + SEXT(imm);
 \end{lstlisting}
 
 \paragraph{Exceptions:} Integer Overflow

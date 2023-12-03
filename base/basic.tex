@@ -2,7 +2,7 @@
 
 \section{Addressing}
 
-The basic addressable unit is the 8-bit byte. 
+The basic addressable unit is the 8-bit byte. Virtual addresses are 64bits long.
 
 \section{Data Type}
 
@@ -29,6 +29,14 @@ The basic addressable unit is the 8-bit byte.
     \bitbox{32}{}
 \end{bytefield}
 
+\subsection{Doubleword}
+
+\begin{bytefield}[%
+        bitformatting=\fakesfbits,
+        endianness=big]{16}
+    \bitheader{0-15} \\
+    \bitbox{16}{}
+\end{bytefield}
 
 \subsection{Signed Integer}
 
@@ -52,6 +60,17 @@ The basic addressable unit is the 8-bit byte.
     \bitbox{1}{\rotatebox{90}{Sign}} 
     \bitbox{31}{}
 \end{bytefield}
+
+\subsubsection{Signed doubleword}
+
+\begin{bytefield}[%
+    bitwidth=\widthof{\tiny ~Sign~},
+    bitformatting=\fakesfbits,
+    endianness=big]{16}
+\bitheader{0-15} \\
+ \bitbox{1}{Sign} & \bitbox{15}{}
+\end{bytefield}
+
 
 \section{CPU Registers}
 
@@ -109,6 +128,13 @@ An Athena processor includes two types of registers: general purpose registers (
     \hline
     N° & name & read & write & Description \\
     \hline
+    \multicolumn{5}{|c|}{Unprivileged Registers} \\
+    \hline
+    \multicolumn{5}{|c|}{Supervisor Registers} \\
+    \hline
+    \hline
+    \multicolumn{5}{|c|}{Machine Registers} \\
+    \hline
     0 & isa & \ok & \no & Machine ISA Register \\
     1 & status & \ok & \ok & Status Register \\
     2 & cause & \ok & \no & Cause Register \\
@@ -160,7 +186,6 @@ An Athena processor includes two types of registers: general purpose registers (
 \end{bytefield}
 
 \subsection{Processor Id}
-
 
 \begin{bytefield}{32}
     \bitheader[endianness=big]{31,1,0} \\

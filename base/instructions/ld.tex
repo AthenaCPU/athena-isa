@@ -1,0 +1,11 @@
+\subsection{LD}
+
+\LSinstr{001100}{ra}{rb}{11}{offset}
+
+\paragraph{Format} LD ra, offset(rb)
+
+\paragraph{Purpose} Loads a 64bit value from memory then store to `ra`
+
+\begin{lstlisting}[language=C]
+    GPR[ra] = *(int32_t)(GPR[rb] + offset);
+\end{lstlisting}

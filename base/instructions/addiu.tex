@@ -4,8 +4,8 @@
 
 \paragraph{Format} ADDIU ra, rb, imm
 
-\paragraph{Purpose} Add immediate word
+\paragraph{Purpose} Add immediate zero extended
 
 \begin{lstlisting}[language=C]
-    GPR[ra] = GPR[rb] + (int32_t)(imm);
+    GPR[ra] = GPR[rb] + ZEXT(imm);
 \end{lstlisting}

@@ -1,0 +1,9 @@
+\subsection{SUBW}
+
+\Rinstr{000000}{ra}{rb}{rc}{00000}{000100}
+
+\paragraph{Format} SUBW ra, rb, rc
+
+\begin{lstlisting}[language=c]
+    GPR[ra] = SEXT((GPR[rb] - GPR[rc])<31:0>);
+\end{lstlisting}

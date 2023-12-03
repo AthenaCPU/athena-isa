@@ -5,8 +5,8 @@
 \paragraph{Format} BLT ra, rb, offset
 
 \begin{lstlisting}[language=c]
-    if ((int32_t)GPR[ra] < (int32_t)GPR[rb])
+    if (GPR[ra] < GPR[rb])
     {
-        PC += (int32_t)offset * 4;
+        PC += SEXT(offset) * 4;
     }
 \end{lstlisting}

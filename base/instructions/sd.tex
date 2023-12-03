@@ -1,0 +1,12 @@
+\subsection{SD}
+
+\LSinstr{001000}{ra}{rb}{11}{offset}
+
+\paragraph{Format} SD offset(ra), rb
+
+\paragraph{Purpose} Store the 64bit value from the low bits of register `rb` into memory
+
+\begin{lstlisting}[language=C]
+    vaddr = GPR[ra] + SEXT(offset);
+    *vaddr = rb;
+\end{lstlisting}

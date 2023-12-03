@@ -4,7 +4,7 @@
 
 \paragraph{Format} LH ra, offset(rb)
 
-\paragraph{Purpose} Loads a 16bit value from memory then sign extended to 32bit before storing to `ra`
+\paragraph{Purpose} Loads a 16bit value from memory then sign extended to 64bit before storing to `ra`
 
 \begin{lstlisting}[language=C]
     GPR[ra] = *(int16_t)(GPR[rb] + offset);
