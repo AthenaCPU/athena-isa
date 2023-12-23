@@ -1,0 +1,51 @@
+name: Nightly
+on:
+  schedule:
+    # Every day at 1 AM
+    - cron: '0 1 * * *'
+
+jobs:
+  check_date:
+    runs-on: ubuntu-latest
+    name: Check latest commit
+    outputs:
+      should_run: ${{ steps.should_run.outputs.should_run }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - id: should_run
+        continue-on-error: true
+        name: Check latest commit is less than a day
+        if: ${{ github.event_name == 'schedule' }}
+        run: test -z $(git rev-list  --after="24 hours"  ${{ github.sha }}) && echo "::set-output name=should_run::false"
+
+  ubuntu:
+    runs-on: ubuntu-latest
+    needs: check_date
+    if: ${{ needs.check_date.outputs.should_run != 'false' }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Install Dependencies
+        run: |
+            run: sudo apt install pdflatex texlive-science texlive-latex-extra
+
+      - name: Build
+        run: make
+
+      - name: Upload Packages to GitHub
+        uses: svenstaro/upload-release-action@v2
+        with:
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          file: ./*.pdf
+          tag: "nightly"
+          file_glob: true
+          overwrite: true
+          promote: true
+          prerelease: true

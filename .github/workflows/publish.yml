@@ -6,23 +6,24 @@ on:
       - "v*.*.*"
 
 jobs:
-  run-on: ubuntu-latest
+  check_date:
+    run-on: ubuntu-latest
 
-  steps:
-    - name: Checkout
-      uses: actions/checkout@v2
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
 
-    - name: Install dependencies
-      run: sudo apt install pdflatex texlive-science texlive-latex-extra
+      - name: Install dependencies
+        run: sudo apt install pdflatex texlive-science texlive-latex-extra
     
-    - name: Build PDF ISA
-      run: make
+      - name: Build PDF ISA
+        run: make
 
-    - name: Release
-      uses: softprops/action-gh-release@v1
-      if: startsWith(github.ref, 'refs/tags/')
-      with:
-        files: |
-            athena_crypto.pdf
-            athena_fpu.pdf
-            athena_isa.pdf
+      - name: Release
+        uses: softprops/action-gh-release@v1
+        if: startsWith(github.ref, 'refs/tags/')
+        with:
+          files: |
+              athena_crypto.pdf
+              athena_fpu.pdf
+              athena_isa.pdf
