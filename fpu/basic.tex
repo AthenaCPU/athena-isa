@@ -4,11 +4,12 @@
 
 IEEE 754 single-precision
 
-\begin{bytefield}{32}
-    \bitheader[endianness=big]{31,30,23,0} \\
-    \bitbox{1}{S} 
-    \bitbox{8}{exp} 
-    \bitbox{23}{fraction}
+\begin{bytefield}[bitheight=\widthof{~Sign~},
+    boxformatting={\centering\small}]{32}
+    \bitheader[endianness=big]{63,52,0} \\
+    \bitbox{1}[bgcolor=lightcyan]{\rotatebox{90}{Sign}} &
+    \bitbox{8}[bgcolor=lightgreen]{Exponent} &
+    \bitbox{23}[bgcolor=lightred]{Mantissa}
 \end{bytefield}
 
 \section{Registers}

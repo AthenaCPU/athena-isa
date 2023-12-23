@@ -33,8 +33,7 @@ jobs:
           fetch-depth: 0
 
       - name: Install Dependencies
-        run: |
-            run: sudo apt install pdflatex texlive-science texlive-latex-extra
+        run: sudo apt install pdflatex texlive-science texlive-latex-extra
 
       - name: Build
         run: make
