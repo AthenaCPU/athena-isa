@@ -1,0 +1,72 @@
+# FUNC
+
+ALU:
+	000000 (ADD)
+	000001 (SUB)
+	000010 (AND)
+	000011 (OR)
+	000100 (XOR)
+	000101 (NOR)
+
+	000110 (SLT)
+	000111 (SLTU)
+
+	010000 (DIV)
+	010001 (DIVU)
+	010010 (MOD)
+	010011 (MODU)
+	010100 (MULT)
+	010101 (MULTH)
+	010110 (MULTHU)
+	
+SHIFT:
+	001000 (SLL) - left shift (<<) logical
+	001001 (SRL) - right shift (>>) logical
+	001010 (SRA) - right (>>) arithmetique
+	001011 (SLLR)
+	001100 (SRAR)
+	001101 (SRLR)
+
+TRAP:
+	100000 (BREAK)
+	100001 (TRAP)
+
+# OPCODE 
+
+ALU: (Imm format)
+	000001 (ADDI)  - sext
+	000010 (SUBI)  - sext
+	000011 (ANDI)  - zext
+	000100 (ORI)   - zext
+	000101 (XORI)  - zext
+	000110 (LIH)   -
+	000111 (SLTI)  - sext
+	001000 (SLTIU) - sext (but unsigned comparaison)
+        
+
+JUMP:
+	001001 (JMP)
+	001010 (CALL)
+
+BRANCH: (imm format, imm << 2)
+	001011 (BEQ) - Brand if equal
+	001100 (BNE) - Branch not equal
+	
+LOAD STORE:
+	001101 (STORE)
+	001110 (LOAD)   - sext
+	001111 (LOADU)  - zext
+
+# PRIVILEGED 
+	000000 (MVFSR)
+	000001 (MVTSR)
+	000010 (RFE)
+
+# CRYPTO
+
+	XXXXXX (SHA256SIG0, SHA256SIG1, SHA256SUM0, SHA256SUM1)
+	XXXXXX (SHA512...)
+	XXXXXX (AESE....)
+	XXXXXX (AESD....)
+	
+
